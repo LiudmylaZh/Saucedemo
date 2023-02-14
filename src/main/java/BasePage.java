@@ -1,11 +1,15 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public abstract class BasePage {
     WebDriver driver;
+    final int waitTimeBeforeClick = 20;
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
@@ -25,6 +29,16 @@ public abstract class BasePage {
         }
         }
         return true;
+        }
+
+        public void refreshPage() {
+        driver.navigate().refresh();
+        }
+
+        public void clickOnTheElement (WebElement element) {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeBeforeClick));
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            element.click();
         }
     }
 

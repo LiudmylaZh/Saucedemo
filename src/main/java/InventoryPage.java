@@ -1,10 +1,20 @@
+import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
+
+
 
 public class InventoryPage extends BasePage {
 
@@ -37,6 +47,15 @@ public class InventoryPage extends BasePage {
     private WebElement reset;
 
 
+    @FindBy (id = "react-burger-cross-btn")
+     WebElement closeSidebar;
+
+    @FindBy (id = "add-to-cart-sauce-labs-backpack")
+    private WebElement addBackpackToCardButton;
+
+    @FindBy (id = "shopping_cart_container")
+    private WebElement cartIcon;
+
 
     public InventoryPage(WebDriver driver) {
         super(driver);
@@ -55,7 +74,11 @@ public class InventoryPage extends BasePage {
 
     public void checkAmountOfProducts(int expectedAmount){
         assertEquals("Amount of products is not " +expectedAmount, productsCards.size(), expectedAmount);
+
     }
+
+
+
 
     public void checkProductsNameIsDisplayed () {
         for (WebElement title:
@@ -77,7 +100,9 @@ public class InventoryPage extends BasePage {
 
     }
     public void clickOnTheSideBarOpenIcon () {
-        sideBarOpenIcon.click();
+
+        clickOnTheElement(sideBarOpenIcon);
+
     }
 
     public boolean allItemsIsDisplayed() {
@@ -94,6 +119,35 @@ public class InventoryPage extends BasePage {
     public void resetIsDisplayed() {
         assertTrue(reset.isDisplayed());
     }
+
+   public void closeSidebar () {
+       closeSidebar.click();
+   }
+
+   public void allItemsIsNotDisplay () {
+       assertFalse(about.isDisplayed());
+   }
+   public void clickOnAddToCartBackpack () {
+       clickOnTheElement (addBackpackToCardButton);
+
+   }
+
+   public void clickOnTheCardIcon () {
+        clickOnTheElement(cartIcon);
+
+   }
+   public void clickOnTheResetAppAState () {
+       clickOnTheElement (reset);
+   }
+
+   public void clickOnTheCloseSideBarIcon () {
+       clickOnTheElement(closeSidebar);
+
+   }
+
+
+
+
 
 
 

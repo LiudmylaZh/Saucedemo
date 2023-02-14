@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class InventoryPageTest extends TestBaseNew {
@@ -43,4 +44,19 @@ public class InventoryPageTest extends TestBaseNew {
         inventoryPage.logoutIsDisplayed();
         inventoryPage.resetIsDisplayed();
     }
+
+    @Test
+    public void sideBarIsClosed () {
+        User user = new User(userName, password);
+        new LoginPage(driver).login(user);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.clickOnTheSideBarOpenIcon();
+        inventoryPage.closeSidebar();
+        assertTrue(inventoryPage.allItemsIsDisplayed());
+        inventoryPage.allItemsIsNotDisplay();
+
+
+
+    }
+
 }
