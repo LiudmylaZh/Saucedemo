@@ -1,19 +1,17 @@
-import org.hamcrest.MatcherAssert;
+import net.bytebuddy.matcher.ElementMatcher;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
+import static com.beust.jcommander.Strings.startsWith;
 import static junit.framework.TestCase.assertEquals;
+import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertFalse;
-
+import static org.junit.Assert.assertTrue;
 
 
 public class InventoryPage extends BasePage {
@@ -55,6 +53,9 @@ public class InventoryPage extends BasePage {
 
     @FindBy (id = "shopping_cart_container")
     private WebElement cartIcon;
+
+    @FindBy (id = "add-to-cart-sauce-labs-bike-light")
+    private WebElement addBikeLightToCartButton;
 
 
     public InventoryPage(WebDriver driver) {
@@ -110,8 +111,14 @@ public class InventoryPage extends BasePage {
     }
 
     public void aboutIsDisplayed() {
-        assertTrue(about.isDisplayed());
+        //assertTrue(about.isDisplayed());
+        assertThat(about.isDisplayed(),is(true));
+        //assertThat(about.getAttribute("href"), startsWith("https://"));
+        //assertThat(about.getText(), allOf("https://"), contains("saucedemo"));
     }
+
+
+
 
     public void logoutIsDisplayed(){
         assertTrue(logout.isDisplayed());
@@ -143,6 +150,16 @@ public class InventoryPage extends BasePage {
    public void clickOnTheCloseSideBarIcon () {
        clickOnTheElement(closeSidebar);
 
+   }
+   public void resetAppState () {
+        clickOnTheSideBarOpenIcon();
+        clickOnTheResetAppAState();
+        clickOnTheCloseSideBarIcon();
+        refreshPage();
+   }
+
+   public void clickOnAddToCardBikeLight() {
+       clickOnTheElement (addBikeLightToCartButton);
    }
 
 

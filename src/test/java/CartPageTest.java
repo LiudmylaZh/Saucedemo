@@ -9,14 +9,26 @@ public class CartPageTest extends TestBaseNew {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(user);
         InventoryPage inventoryPage = new InventoryPage(driver);
-        inventoryPage.clickOnTheSideBarOpenIcon();
-        inventoryPage.clickOnTheResetAppAState();
-        inventoryPage.clickOnTheCloseSideBarIcon();
-        inventoryPage.refreshPage();
+        inventoryPage.resetAppState();
         inventoryPage.clickOnAddToCartBackpack();
         inventoryPage.clickOnTheCardIcon();
         CartPage cardPage = new CartPage(driver);
         assertTrue(cardPage.checkoutButtonIsDisplayed());
+    }
+
+    @Test
+    public void addSeveralItems () {
+        User user = new User(userName, password);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(user);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.resetAppState();
+        inventoryPage.clickOnAddToCartBackpack();
+        inventoryPage.clickOnAddToCardBikeLight();
+        inventoryPage.clickOnTheCardIcon();
+        CartPage cardPage = new CartPage(driver);
+        assertTrue(cardPage.checkProductCartsQuantity(2));
+
     }
 
 
