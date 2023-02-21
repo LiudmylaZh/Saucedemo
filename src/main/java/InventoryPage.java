@@ -5,11 +5,11 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static com.beust.jcommander.Strings.startsWith;
+
 import static junit.framework.TestCase.assertEquals;
 import static net.bytebuddy.matcher.ElementMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -111,8 +111,8 @@ public class InventoryPage extends BasePage {
     }
 
     public void aboutIsDisplayed() {
-        //assertTrue(about.isDisplayed());
-        assertThat(about.isDisplayed(),is(true));
+       assertTrue(about.isDisplayed());
+        //assertThat(about.isDisplayed(),is(true));
         //assertThat(about.getAttribute("href"), startsWith("https://"));
         //assertThat(about.getText(), allOf("https://"), contains("saucedemo"));
     }

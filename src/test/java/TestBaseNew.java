@@ -43,7 +43,7 @@ public class TestBaseNew {
         driver = new ChromeDriver();
         String BASE_URL = "https://www.saucedemo.com/";
         driver.get(BASE_URL);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         driver.manage().window().maximize();
     }
 

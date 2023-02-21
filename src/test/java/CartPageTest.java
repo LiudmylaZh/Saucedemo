@@ -30,6 +30,17 @@ public class CartPageTest extends TestBaseNew {
         assertTrue(cardPage.checkProductCartsQuantity(2));
 
     }
+    @Test
+    public void cartIsEmpty(){
+        User user = new User(userName, password);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(user);
+        InventoryPage inventoryPage = new InventoryPage(driver);
+        inventoryPage.resetAppState();
+        inventoryPage.clickOnTheCardIcon();
+        CartPage cartPage = new CartPage(driver);
+        assertTrue(cartPage.cartIsEmpty());
+    }
 
 
 

@@ -26,4 +26,6 @@ public class CheckoutTest extends TestBaseNew {
         assertTrue(checkoutStepTwoPage.checkProductCartsQuantity(2));
         assertThat(checkoutStepTwoPage.getProductCarts(), hasSize(2));
     }
+
+
 }
