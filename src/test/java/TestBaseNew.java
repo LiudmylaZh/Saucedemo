@@ -16,15 +16,15 @@ public class TestBaseNew {
 
     @Rule
     public TestWatcher screenshotOnFailure = new TestWatcher() {
-        @Override
+             @Override
         protected void failed(Throwable e, Description description) {
             makeScreenshotOnFailure();
             driver.close();
             driver.quit();
         }
 
-        @Attachment("Screenshot on failure")
-        public byte[] makeScreenshotOnFailure() {
+      @Attachment("Screenshot on failure")
+       public byte[] makeScreenshotOnFailure() {
             return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
         }
         @Override

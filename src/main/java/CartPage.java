@@ -33,6 +33,8 @@ public class CartPage extends BasePage{
     public boolean checkoutButtonIsDisplayed () {
         return checkoutButton.isDisplayed();
     }
+    @FindBy (className = "inventory_item_prises")
+    private List<WebElement> productPrises;
 
     @Step("Get quantity of products")
     public boolean checkProductCartsQuantity( int expectedQuantity) {
@@ -54,6 +56,16 @@ public class CartPage extends BasePage{
     @Step("Click on checkout button")
     public void clickOnCheckoutButton () {
         clickOnTheElement(checkoutButton);
+    }
+
+    public double getSumPrisesOfAllProducts (){
+        double sum = 0;
+        for (WebElement product:
+                productPrises) {
+            sum+= Double.parseDouble(product.getText().substring(1));
+
+        }
+        return sum;
     }
 
 
